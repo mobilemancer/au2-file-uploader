@@ -1,0 +1,49 @@
+<div class="image-uploader">
+  <!-- Upload Part -->
+  <div class="upload" if.bind="!uploadedGallery">
+    <input
+      ref="fileInput"
+      type="file"
+      name="file"
+      multiple
+      accept="image/*,video/*,audio/*"
+      style="display: none"
+    />
+
+    <div if.bind="selectedFiles.length>0">
+      <h3>Selected Files</h3>
+
+      <div class="thumbnail-grid">
+        <div class="img-container" repeat.for="file of selectedFiles">
+          <img src.bind="file.url" title.bind="file.size" />
+          <div class="label">
+            <span class="file-name">${file.name}</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        Selected Files: <span>${fileCount}</span> Total Size: <span>${returnFileSize(totalSize)}</span>
+      </div>
+    </div>
+
+    <div>
+      <span>
+        <button click.delegate="openFilePicker()">Select Files</button>
+      </span>
+      <span>
+        <button click.delegate="upload()">Upload</button>
+      </span>
+    </div>
+  </div>
+
+  <!-- Showing the Result -->
+  <div class="result" if.bind="uploadedGallery">
+    <h3>Gallery Created Successfully</h3>
+    <div>Saved the following files:</div>
+    <div repeat.for="fileName of uploadedGallery.files">
+      <icon-glyph type="check"></icon-glyph>${fileName}
+    </div>
+    <button click.delegate="newUpload()">Upload More</button>
+  </div>
+</div>

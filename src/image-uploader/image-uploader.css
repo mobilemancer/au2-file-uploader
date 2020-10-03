@@ -1,0 +1,49 @@
+:root {
+  --thumbnail-width: min(calc(100vw / 2 - var(--padding-thumbnail-label) * 4), 200px);
+  --padding-thumbnail-label: 8px;
+}
+
+.image-uploader {
+  width: 100%;
+}
+
+.thumbnail-grid {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(var(--thumbnail-width), 1fr));
+  grid-gap: 1rem;
+}
+
+.img-container {
+  position: relative;
+  text-align: center;
+}
+
+.img-container img {
+  width: var(--thumbnail-width);
+  height: 90px;
+  box-shadow: 1px 1px 3px #9b3dd190;
+  object-fit: cover;
+}
+
+.label {
+  max-width: calc(var(--thumbnail-width) - 2 * var(--padding-thumbnail-label));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  border-radius: 5px;
+  padding: 0px 10px;
+  color: #ffffffff;
+  background-color: #9b3dd190;
+  text-shadow: 1px 1px 2px black, -1px -1px 2px black;
+}
+
+.file-name {
+  max-width: calc(var(--thumbnail-width) - 4 * var(--padding-thumbnail-label));
+  padding-top: 8px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
