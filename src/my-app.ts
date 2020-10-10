@@ -1,3 +1,1 @@
-export class MyApp {
-  public message = 'Hello World!';
-}
+export class MyApp {}

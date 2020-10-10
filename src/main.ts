@@ -1,6 +1,6 @@
-import Aurelia from 'aurelia';
-import { MyApp } from './my-app';
+import Aurelia from "aurelia";
 
-Aurelia
-  .app(MyApp)
-  .start();
+import { MyApp } from "./my-app";
+import * as componentRegistry from "./componentRegistry";
+
+Aurelia.register(componentRegistry).app(MyApp).start();

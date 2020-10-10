@@ -1,15 +1,15 @@
 <div class="image-uploader">
-  <!-- Upload Part -->
-  <div class="upload" if.bind="!uploadedGallery">
-    <input
-      ref="fileInput"
-      type="file"
-      name="file"
-      multiple
-      accept="image/*,video/*,audio/*"
-      style="display: none"
-    />
+  <input
+    ref="fileInput"
+    class="fileInput"
+    type="file"
+    name="file"
+    multiple
+    accept="image/*"
+    style="display: none"
+  />
 
+  <div class="upload">
     <div if.bind="selectedFiles.length>0">
       <h3>Selected Files</h3>
 
@@ -23,27 +23,20 @@
       </div>
 
       <div>
-        Selected Files: <span>${fileCount}</span> Total Size: <span>${returnFileSize(totalSize)}</span>
+        Files Selected: <span>${fileCount}</span> Total Size: <span>${returnFileSize(totalSize)}</span>
       </div>
     </div>
 
     <div>
-      <span>
+      <span if.bind="fileCount === 0">
         <button click.delegate="openFilePicker()">Select Files</button>
       </span>
-      <span>
+      <span if.bind="fileCount > 0">
         <button click.delegate="upload()">Upload</button>
       </span>
+      <span if.bind="fileCount > 0">
+        <button click.delegate="openFilePicker()">Select New Files</button>
+      </span>
     </div>
-  </div>
-
-  <!-- Showing the Result -->
-  <div class="result" if.bind="uploadedGallery">
-    <h3>Gallery Created Successfully</h3>
-    <div>Saved the following files:</div>
-    <div repeat.for="fileName of uploadedGallery.files">
-      <icon-glyph type="check"></icon-glyph>${fileName}
-    </div>
-    <button click.delegate="newUpload()">Upload More</button>
   </div>
 </div>
